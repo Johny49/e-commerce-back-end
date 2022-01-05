@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     const product = Product.create(req.body);
     if (req.body.tagIds.length) {
       await product.setTags(req.body.tagIds);
-      await (await product).save();
+      await product.save();
     }
     console.log(product.get({ plain: true}));
     res.status(200).json(product);
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
     res.status(200).json(product)
   }
   catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 })
 // router.put('/:id', (req, res) => {

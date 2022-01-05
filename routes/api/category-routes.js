@@ -29,7 +29,6 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-
 });
 
 //POST to create a new category
@@ -46,8 +45,6 @@ router.post('/', async (req, res) => {
 // PUT to update a category by id
 router.put('/:id', async (req, res) => {
   try {
-    console.log(req.params);
-
     const categoryData = await Category.update(req.body, {
       where: {
         id: req.params.id,
@@ -85,6 +82,7 @@ try {
   res.status(200).json(categoryData);
 } catch (err) {
   res.status(500).json(err);
-}});
+}
+});
 
 module.exports = router;
