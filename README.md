@@ -1,8 +1,7 @@
-# Employee Tracker CMS
+# E-Commerce Backend
 
 ## Table of Contents
 * [Description](#description)
-* [Prompt Structure](#prompt-structure)
 * [Database Schema](#database-schema)
 * [Screenshots](#screenshot)
 * [Installation](#installation)
@@ -14,46 +13,34 @@
 * [Project Status](#project-status)
 
 ## Description 
-This is a Node.js command-line application that interfaces with a basic employee management database to manage department, role, and employee records.
+This is a back end for an e-commerce site that uses Express and Sequelize to interface with a MySQL database. The linked video walkthrough shows examples of RESTful CRUD operations being performed using Insomnia.
 
 ## Screenshots
 ![Screenshot of app inital screen](./assets/readme-screenshot.png)
-![Screenshot of app display](./assets/readme-screenshot-2.png)
-
-## Prompt Structure
-    * View All
-        - view all departments
-        - view all roles
-        - view all employees
-    * Add New
-        - add a department
-        - add a role
-        - add an employee
-    * Update Existing Employee Record
-	    - update role and manager
-    * View Total Department Personnel Budget
-        - select department
 
 
 ## Database Schema
-(employee_tracker_db)
+(ecommerce_db)
 
-	• department
+	• Category
 	    ◦ id
-	    ◦ name
+	    ◦ category_name
 
-	• role
+	• Product
 	    ◦ id
-	    ◦ title
-	    ◦ salary
-	    ◦ department_id
+	    ◦ product_name
+	    ◦ price
+	    ◦ stock
+		◦ category_id (References the `Category` model's `id`)
 
-	•	employee
+	•	Tag
 	    ◦ id
-	    ◦ first_name
-	    ◦ last_name
-	    ◦ role_id
-	    ◦ manager_id
+	    ◦ tag_name
+
+	•	ProductTag
+	    ◦ id
+	    ◦ product_id (References the `Product` model's `id`)
+	    ◦ tag_id (References the `Tag` model's `id`)
 
 
 ## Installation
@@ -69,7 +56,7 @@ source db/schema.sql;
 
 Optional - Load seed data:
 ```bash
-source db/seeds.sql;
+npm run seed;
 ```
 
 
@@ -78,14 +65,15 @@ The application can be invoked with the following command:
 ```bash
 node index.js
 ```
+Calls to the api can be made using Postman or Insomnia.
 
 
 ## Link
-[Video Walkthrough](https://drive.google.com/drive/folders/17AvkjUoSTC1Nji76Mpb2CnqLLxsnVDh5?usp=sharing)
+[Video Walkthrough](https://drive.google.com/drive/folders/1BQRRPhXHZzI-hGZ5gswIW9H_-gHgJeNy?usp=sharing)
 
 
 ## Code
-[GitHub Code Repository](https://github.com/Johny49/employee-tracker-cms)
+[GitHub Code Repository](https://github.com/Johny49/e-commerce-back-end)
 
 
 ## Contact 
@@ -95,17 +83,12 @@ Created by [@johny49](https://github.com/Johny49/) - feel free to contact me!
 ## Technologies
 - JavaScript
 - Node.js
-- Inquirer.js
-- mySQL
-- ASCII-Art Logo
+- Express
+- MySQL
+- Sequelize
 
 
 ## Project Status
 Project is: completed and functioning as intended.  
 Potential future improvements include:
-* Delete a department, role, or employee
-* Update first name, last name of employee
-* Improved handling of names containing a space
-* Ability to view employees who report to a chosen manager
-* View all employees in a chosen department
-* View all employees with a chosen role
+* Creation of front end website or mobile app to access the back end data
