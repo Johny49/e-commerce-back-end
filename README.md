@@ -33,11 +33,11 @@ This is a back end for an e-commerce site that uses Express and Sequelize to int
 	    ◦ stock
 		◦ category_id (References the `Category` model's `id`)
 
-	•	Tag
+•	Tag
 	    ◦ id
 	    ◦ tag_name
 
-	•	ProductTag
+•	ProductTag
 	    ◦ id
 	    ◦ product_id (References the `Product` model's `id`)
 	    ◦ tag_id (References the `Tag` model's `id`)
@@ -56,7 +56,7 @@ source db/schema.sql;
 
 Optional - Load seed data:
 ```bash
-npm run seed;
+npm run seed
 ```
 
 
