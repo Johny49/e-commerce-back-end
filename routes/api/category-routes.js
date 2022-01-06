@@ -31,34 +31,29 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//POST to create a new category
+// Create a new category
 router.post('/', async (req, res) => {
   try {
     const categoryData = await Category.create(req.body);
     console.log(categoryData.get({ plain: true}));
     res.status(200).json(categoryData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
   }
 });
 
-// PUT to update a category by id
+// Update a category by id
 router.put('/:id', async (req, res) => {
   try {
     const categoryData = await Category.update(req.body, {
       where: {
         id: req.params.id,
       },
-      // returning: true
   });
-
   if (!categoryData[0]) { //TODO troubleshoot this
     res.status(404).json({ message: 'No category found with this id' });
     return;
   }
-
-  await categoryData.update(req.body);
-  await categoryData.save();
   res.status(200).json(categoryData);
 } catch (err) {
     res.status(500).json(err);
